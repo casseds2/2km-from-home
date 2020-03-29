@@ -6,19 +6,23 @@ const pharmaciesBtn = document.getElementById("pharmacies-filter");
 let placeSearch = "grocery_or_supermarket";
 
 groceriesBtn.onclick = () => {
-  groceriesBtn.classList.toggle("btn--selected");
-  pharmaciesBtn.classList.toggle("btn--selected");
-  placeSearch = "grocery_or_supermarket";
-  places.innerHTML = "";
-  initMap();
+  if (placeSearch !== "grocery_or_supermarket") {
+    groceriesBtn.classList.toggle("btn--selected");
+    pharmaciesBtn.classList.toggle("btn--selected");
+    placeSearch = "grocery_or_supermarket";
+    places.innerHTML = "";
+    initMap();
+  }
 };
 
 pharmaciesBtn.onclick = () => {
-  pharmaciesBtn.classList.toggle("btn--selected");
-  groceriesBtn.classList.toggle("btn--selected");
-  placeSearch = "pharmacy";
-  places.innerHTML = "";
-  initMap();
+  if (placeSearch !== "pharmacy") {
+    pharmaciesBtn.classList.toggle("btn--selected");
+    groceriesBtn.classList.toggle("btn--selected");
+    placeSearch = "pharmacy";
+    places.innerHTML = "";
+    initMap();
+  }
 };
 
 const getLocation = options => {
@@ -32,7 +36,7 @@ async function initMap() {
   /* google map */
   const position = await getLocation({
     enableHighAccuracy: true,
-    timeout: 5000,
+    timeout: 7000,
     maximumAge: 0
   });
   const pos = {
@@ -86,6 +90,7 @@ async function initMap() {
           }
           return expanded;
         };
+
         let clone = placeTemplate.content.cloneNode(true);
         let title = clone.getElementById("place-title");
         let open = clone.getElementById("place-status");

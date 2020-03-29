@@ -71,10 +71,11 @@ body {
 
 .places {
   list-style-type: none;
-  margin: 2rem 0;
-  padding: 0;
   display: -ms-grid;
   display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 1rem;
   background-color: var(--clr-dark);
   padding: 1rem;
@@ -87,6 +88,7 @@ body {
 .places .place {
   background-color: var(--clr-light);
   border-radius: 1.5rem;
+  width: 100%;
   padding: 1rem;
   position: relative;
 }
@@ -111,13 +113,6 @@ body {
   width: 100%;
   font-size: 2rem;
   text-align: center;
-}
-
-.places .place .image-container {
-  width: 100%;
-  display: -ms-grid;
-  display: grid;
-  place-items: center;
 }
 
 .places .place p {
@@ -187,7 +182,7 @@ footer p {
     background-image: var(--bg-icon);
     background-size: cover;
     opacity: 0.1;
-    z-index: 1;
+    z-index: -1;
   }
 }
 

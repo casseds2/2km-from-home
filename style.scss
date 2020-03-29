@@ -68,9 +68,8 @@ body {
 
 .places {
   list-style-type: none;
-  margin: 2rem 0;
-  padding: 0;
   display: grid;
+  justify-content: center;
   gap: 1rem;
   background-color: var(--clr-dark);
   padding: 1rem;
@@ -81,6 +80,7 @@ body {
   .place {
     background-color: var(--clr-light);
     border-radius: 1.5rem;
+    width: 100%;
     padding: 1rem;
     position: relative;
 
@@ -104,12 +104,6 @@ body {
       width: 100%;
       font-size: 2rem;
       text-align: center;
-    }
-
-    .image-container {
-      width: 100%;
-      display: grid;
-      place-items: center;
     }
 
     p {
@@ -144,7 +138,6 @@ footer {
   z-index: 20;
 
   p {
-    // padding: 0;
     font-size: 1.2rem;
   }
 }
@@ -156,7 +149,7 @@ footer {
   }
 
   .title {
-      font-size: 4rem;
+    font-size: 4rem;
   }
 
   .places {
@@ -177,13 +170,12 @@ footer {
       background-image: var(--bg-icon);
       background-size: cover;
       opacity: 0.1;
-      z-index: 1;
+      z-index: -1;
     }
   }
 }
 
 @media screen and (min-width: 1200px) {
-
   .places {
     grid-template-columns: repeat(3, 1fr);
     gap: 2.5rem;
