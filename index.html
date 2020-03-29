@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2km From Home</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="container">
+      <h1 class="title">2km From Home</h1>
+      <p class="subtitle">Find out what is near you!</p>
+      <nav>
+        <ul class="nav-list">
+          <li><button class="btn btn--selected" id="groceries-filter">Groceries</button></li>
+          <li><button class="btn" id="pharmacies-filter">Pharmacies</button></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="icon">
+      <section class="container">
+        <div id="map" class="map-container"></div>
+      </section>
+
+      <section class="container">
+        <ul class="places" id="places-list">
+          <!-- populate at runtime -->
+        </ul>
+
+        <!-- template for place item -->
+        <template id="place">
+          <li class="place">
+            <h2 id="place-title">Holder</h2>
+            <p>Open Now: <span class="place-status" id="place-status"></span></p>
+            <p>Address: <span id="place-address"></span></p>
+            <p>Rating: <span id="place-rating"></span></p>
+            <p>Pricing: <span id="place-pricing"></span></p>
+          </li>
+        </template>
+      </section>
+    </main>
+
+    <footer>
+      <p>Contributing to the effort 🤝</p>
+    </footer>
+
+    <script src="app.js"></script>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBS3G0cjnQ_xK57965TUhZOxr61ng3sIUQ&callback=initMap&libraries=places"
+    ></script>
+  </body>
+</html>
