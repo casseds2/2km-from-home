@@ -36,32 +36,19 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   list-style-type: none;
   background-color: var(--clr-dark);
   padding: 1rem;
   border-radius: 1.5rem;
+  height: 30vh;
 }
 
-.nav-list li .btn {
-  font-size: 1.2rem;
-  padding: 0.6rem 1rem;
-  background-color: var(--clr-light);
-  border: none;
-  border-radius: 1rem;
-  cursor: pointer;
-  -webkit-transition: background-color 200ms ease-in;
-  transition: background-color 200ms ease-in;
-}
-
-.nav-list li .btn--selected {
-  background-color: #8b6262;
-  color: white;
-}
-
-.nav-list li .btn:hover, .nav-list li .btn:focus {
-  background-color: #c5c1c1;
+.nav-list > label {
+  font-size: 1.3rem;
 }
 
 .map-container {
@@ -85,12 +72,28 @@ body {
   border-radius: 1.5rem;
 }
 
+@keyframes slide-up {
+  from {
+    transform: translateY(200px);
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
 .places .place {
+  opacity: 0;
   background-color: var(--clr-light);
   border-radius: 1.5rem;
   width: 100%;
   padding: 1rem;
   position: relative;
+  animation-name: slide-up;
+  animation-delay: calc(100ms * var(--place-index));
+  animation-timing-function: linear;
+  animation-duration: 600ms;
+  animation-fill-mode: forwards;
 }
 
 .places .place::after {
@@ -158,6 +161,10 @@ footer p {
 }
 
 @media screen and (min-width: 916px) {
+  .nav-list {
+    flex-direction: row;
+    height: 5rem;
+  }
   .container {
     width: 90%;
     margin: 0 auto;
@@ -166,8 +173,7 @@ footer p {
     font-size: 4rem;
   }
   .places {
-    -ms-grid-columns: (1fr)[2];
-        grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: repeat(2, 1fr);
   }
   .place::after {
     position: absolute;
@@ -188,8 +194,7 @@ footer p {
 
 @media screen and (min-width: 1200px) {
   .places {
-    -ms-grid-columns: (1fr)[3];
-        grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(3, 1fr);
     gap: 2.5rem;
   }
   .place {
