@@ -6,8 +6,28 @@
   let container;
   let map;
   let placesApi;
+  let directionsService;
+  let directionsRenderer;
   let currentPlaces;
   let markers = [];
+
+  const drawDirections = place => {
+    let { lat, lng } = position;
+    directionsService.route(
+      {
+        origin: new google.maps.LatLng(position),
+        destination: place["geometry"]["location"],
+        travelMode: "DRIVING"
+      },
+      (response, status) => {
+        if (status === "OK") {
+          directionsRenderer.setDirections(response);
+        } else {
+          alert(`Directions request failed due to ${status}`);
+        }
+      }
+    );
+  };
 
   const drawPlaceMarkers = () => {
     for (var i = 0; i < markers.length; i++) {
@@ -20,6 +40,9 @@
         position: latLng,
         map: map,
         title: place["name"]
+      });
+      marker.addListener("click", () => {
+        drawDirections(place);
       });
       markers.push(marker);
     });
@@ -80,6 +103,9 @@
         drawPlaceMarkers();
       }
     );
+    directionsService = new google.maps.DirectionsService();
+    directionsRenderer = new google.maps.DirectionsRenderer();
+    directionsRenderer.setMap(map);
   });
 </script>
 

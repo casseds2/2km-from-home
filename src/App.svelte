@@ -38,7 +38,7 @@
   <script
     async
     defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBS3G0cjnQ_xK57965TUhZOxr61ng3sIUQ&callback=initMap&libraries=places">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBS3G0cjnQ_xK57965TUhZOxr61ng3sIUQ&callback=initMap&libraries=places,directions">
 
   </script>
 </svelte:head>
