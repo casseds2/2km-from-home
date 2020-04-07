@@ -5,5 +5,5 @@ Dave Bolger @ https://2kmfromhome.com/
 
 ## Improvements
 
-- Adding amneities
+- Adding amenities
 - Adding directions
